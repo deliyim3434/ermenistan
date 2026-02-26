@@ -3,219 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Türeme Avcıları | Elite</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <title>Türeme Avcıları | Resmi</title>
     <style>
-        :root {
-            --primary-glow: #ff4b2b;
-            --secondary-glow: #00d2ff;
-            --glass-bg: rgba(255, 255, 255, 0.07);
-            --glass-border: rgba(255, 255, 255, 0.15);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        /* Modern Yazı Tipi ve Arka Plan */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
         body {
-            background: #050505;
+            /* Yeni, Epik Manzaralı Arka Plan (video generics karesi) */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), 
+                        url('image_0.png'); /* Epik Adana Şehir Manzarası/Generic Karesi */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
-            font-family: 'Inter', sans-serif;
             color: white;
+            overflow: hidden; /* Bayrak şeridinin taşmasını önler */
         }
 
-        /* Arka Plan Görseli ve Overlay */
-        .background-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
-                        url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop'); /* Epik Dağ Manzarası */
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-            transform: scale(1.1);
-            animation: backgroundSlowZoom 20s infinite alternate;
-        }
-
-        @keyframes backgroundSlowZoom {
-            from { transform: scale(1); }
-            to { transform: scale(1.1); }
-        }
-
-        /* Ana Panel Animasyonu */
-        .glass-panel {
-            width: 90%;
-            max-width: 450px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--glass-border);
-            border-radius: 40px;
-            padding: 50px 30px;
-            text-align: center;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        /* Video Çerçevesi ve Cam Panel */
+        .video-cerceve {
             position: relative;
-            animation: float 6s ease-in-out infinite;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        .cam-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 40px 20px;
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.8);
+            margin-bottom: 20px; /* Altyazı için boşluk */
         }
 
-        /* Logo ve Parlama */
-        .logo-area {
-            width: 110px;
-            height: 110px;
-            background: linear-gradient(135deg, #ff4b2b, #ff416c);
-            margin: 0 auto 25px;
-            border-radius: 35% 65% 70% 30% / 30% 30% 70% 70%; /* Organik şekil */
+        .logo-alani {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #ff4b2b, #ff416c);
+            margin: 0 auto 20px;
+            border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 50px;
-            box-shadow: 0 10px 30px rgba(255, 75, 43, 0.4);
-            animation: morph 8s linear infinite;
+            font-size: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(255, 75, 110, 0.5);
         }
 
-        @keyframes morph {
-            0%, 100% { border-radius: 35% 65% 70% 30% / 30% 30% 70% 70%; }
-            50% { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; }
+        h1 { font-size: 2rem; margin-bottom: 5px; letter-spacing: 2px; text-transform: uppercase; }
+        .slogan { font-size: 0.9rem; color: #ddd; margin-bottom: 30px; }
+
+        /* Yönetici Listesi */
+        .yonetici-kutusu {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 30px;
         }
 
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
-            letter-spacing: -1px;
-            margin-bottom: 8px;
-            background: linear-gradient(to right, #fff, #bbb);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .tagline {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 35px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        /* Admin Kartları */
-        .admin-box {
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 25px;
-            padding: 10px 20px;
-            margin-bottom: 35px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .admin-item {
+        .yonetici-ogesi {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.3s;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
+        .yonetici-ogesi:last-child { border-bottom: none; }
 
-        .admin-item:last-child { border-bottom: none; }
-        .admin-item:hover { transform: translateX(5px); }
+        .yonetici-adi { font-weight: bold; color: #00d2ff; }
+        .yonetici-rutbe { font-size: 0.8rem; background: #ff4b2b; padding: 2px 10px; border-radius: 10px; }
 
-        .admin-name {
-            font-weight: 600;
-            color: var(--secondary-glow);
-            font-size: 1rem;
-        }
-
-        .admin-rank {
-            font-size: 0.7rem;
-            font-weight: 800;
-            background: linear-gradient(90deg, #ff4b2b, #ff416c);
-            padding: 4px 12px;
-            border-radius: 50px;
-            letter-spacing: 1px;
-        }
-
-        /* Telegram Butonu */
-        .btn-tg {
-            display: inline-block;
+        /* Butonlar */
+        .buton {
+            display: block;
             width: 100%;
-            padding: 18px;
-            background: #fff;
-            color: #000;
+            padding: 15px;
+            margin-bottom: 10px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            transition: 0.3s;
+            text-transform: uppercase;
         }
 
-        .btn-tg:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2);
-            background: #00d2ff;
-            color: #fff;
+        .buton-tg { background: #0088cc; color: white; border: none; }
+        .buton-tg:hover { background: #00aaff; transform: translateY(-3px); }
+
+        /* Aranan Şahıslar Altyazı Aland (Yeni Türkçe Detay) */
+        .video-altyazi {
+            font-size: 1.1rem;
+            color: #ff4b2b; /* Vurgulu arananlar rengi */
+            font-weight: bold;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+            margin-bottom: 20px;
         }
 
-        /* Alt Bayrak Şeridi - Daha Modern */
-        .flag-container {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            display: flex;
-            opacity: 0.8;
+        /* Bayrak Şeridi Detayı (Alt Kısım) */
+        .bayrak-seridi {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 5px; display: flex;
         }
-        .s-red { background: #D90012; flex: 1; }
-        .s-blue { background: #0033A0; flex: 1; }
-        .s-orange { background: #F2A800; flex: 1; }
-
-        /* Mobil Uyumluluk */
-        @media (max-width: 480px) {
-            h1 { font-size: 1.8rem; }
-            .glass-panel { padding: 40px 20px; }
-        }
+        .s-kirmizi { background: #D90012; flex: 1; }
+        .s-mavi { background: #0033A0; flex: 1; }
+        .s-turuncu { background: #F2A800; flex: 1; }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="background-container"></div>
+    <div class="video-cerceve">
+        
+        <div class="cam-panel">
+            <div class="logo-alani">🦅</div>
+            <h1>TÜREME AVCILARI</h1>
+            <p class="slogan">GÜÇ, ADALET VE SADAKAT</p>
 
-    <div class="glass-panel">
-        <div class="logo-area">🦅</div>
-        <h1>TÜREME AVCILARI</h1>
-        <p class="tagline">Power • Justice • Loyalty</p>
+            <div class="yonetici-kutusu">
+                <div class="yonetici-ogesi">
+                    <span class="yonetici-adi">@falohan</span>
+                    <span class="yonetici-rutbe">KURUCU</span>
+                </div>
+                <div class="yonetici-ogesi">
+                    <span class="yonetici-adi">@Sosyopatbirey</span>
+                    <span class="yonetici-rutbe">KURUCU</span>
+                </div>
+                <div class="yonetici-ogesi">
+                    <span class="yonetici-adi">@aranansahiss</span>
+                    <span class="yonetici-rutbe">KURUCU</span>
+                </div>
+            </div>
 
-        <div class="admin-box">
-            <div class="admin-item">
-                <span class="admin-name">@falohan</span>
-                <span class="admin-rank">FOUNDER</span>
-            </div>
-            <div class="admin-item">
-                <span class="admin-name">@Sosyopatbirey</span>
-                <span class="admin-rank">FOUNDER</span>
-            </div>
-            <div class="admin-item">
-                <span class="admin-name">@aranansahiss</span>
-                <span class="admin-rank">FOUNDER</span>
-            </div>
+            <a href="https://t.me/turemeavcilari" class="buton buton-tg">TELEGRAM GRUBUNA KATIL</a>
         </div>
 
-        <a href="https://t.me/turemeavcilari" class="btn-tg">JOIN TELEGRAM COMMUNITY</a>
+        <div class="video-altyazi">Aranan Sahıs: Che Falo Maraz</div>
 
-        <div class="flag-container">
-            <div class="s-red"></div>
-            <div class="s-blue"></div>
-            <div class="s-orange"></div>
-        </div>
+    </div>
+
+    <div class="bayrak-seridi">
+        <div class="s-kirmizi"></div>
+        <div class="s-mavi"></div>
+        <div class="s-turuncu"></div>
     </div>
 
 </body>
