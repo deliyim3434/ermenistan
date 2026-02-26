@@ -3,181 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Türeme Avcıları | Telegram</title>
+    <title>Türeme Avcıları | Official</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        /* Modern Font ve Arka Plan */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         
         body {
-            background-color: #0e1621; /* Telegram Koyu Tema */
-            background-image: url('https://user-images.githubusercontent.com/1503845/143534149-14736f9d-5f34-45e3-ab7d-895f5193911f.png'); /* Telegram Desenli Arka Plan */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1562590747-062e245a1639?q=80&w=2070&auto=format&fit=crop'); /* Ağrı Dağı / Ararat Görseli */
+            background-size: cover;
+            background-position: center;
             background-attachment: fixed;
-            color: white;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            color: white;
         }
 
-        .container {
-            width: 95%;
-            max-width: 800px;
-            background: rgba(23, 33, 43, 0.95);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
+        /* Cam Efekti Kartı */
+        .glass-panel {
+            width: 90%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
         }
 
-        /* Üst Bilgi Paneli */
-        .header {
-            background: #242f3d;
-            padding: 15px 20px;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #101921;
-        }
-
-        .group-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #33a1fd, #2185d0);
+        .logo-area {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #ff4b2b, #ff416c);
+            margin: 0 auto 20px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 20px;
-            font-weight: bold;
-            margin-right: 15px;
+            font-size: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(255, 75, 110, 0.5);
         }
 
-        .header-info h2 { font-size: 18px; color: #fff; }
-        .header-info p { font-size: 13px; color: #6ab3f3; }
+        h1 { font-size: 2rem; margin-bottom: 5px; letter-spacing: 2px; }
+        .tagline { font-size: 0.9rem; color: #ddd; margin-bottom: 30px; }
 
-        /* Mesaj Alanı */
-        .chat-area {
-            padding: 20px;
-            height: 400px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .message {
-            max-width: 80%;
-            padding: 10px 15px;
-            border-radius: 15px;
-            font-size: 14px;
-            position: relative;
-        }
-
-        .received {
-            background: #182533;
-            align-self: flex-start;
-            border-bottom-left-radius: 2px;
-        }
-
-        .user-tag { font-weight: bold; color: #6ab3f3; display: block; margin-bottom: 5px; }
-
-        /* Kurucular Bölümü */
-        .admin-section {
-            background: #17212b;
-            padding: 15px;
-            border-top: 1px solid #101921;
-        }
-
-        .admin-title { font-size: 14px; color: #6ab3f3; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
-
-        .admin-list { display: flex; flex-wrap: wrap; gap: 10px; }
-
-        .admin-card {
-            background: #242f3d;
-            padding: 8px 15px;
+        /* Kurucular Listesi */
+        .admin-box {
+            background: rgba(0, 0, 0, 0.3);
             border-radius: 20px;
-            font-size: 13px;
-            border: 1px solid #33a1fd;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            padding: 20px;
+            margin-bottom: 30px;
         }
 
-        .admin-card span { color: #33a1fd; font-weight: bold; }
+        .admin-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .admin-item:last-child { border-bottom: none; }
 
-        /* Buton */
-        .join-btn {
+        .admin-name { font-weight: bold; color: #00d2ff; }
+        .admin-rank { font-size: 0.8rem; background: #ff4b2b; padding: 2px 10px; border-radius: 10px; }
+
+        /* Butonlar */
+        .btn {
             display: block;
-            text-align: center;
-            background: #33a1fd;
-            color: white;
-            text-decoration: none;
+            width: 100%;
             padding: 15px;
-            margin: 20px;
-            border-radius: 10px;
+            margin-bottom: 10px;
+            border-radius: 50px;
+            text-decoration: none;
             font-weight: bold;
             transition: 0.3s;
+            text-transform: uppercase;
         }
-        .join-btn:hover { background: #2a8ad4; transform: scale(1.02); }
 
-        /* Fotoğraf Alanı */
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 10px;
-            margin-top: 10px;
+        .btn-tg { background: #0088cc; color: white; border: none; }
+        .btn-tg:hover { background: #00aaff; transform: translateY(-3px); }
+
+        /* Ermenistan Bayrağı Detayı (Alt Kısım) */
+        .flag-stripe {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 5px; display: flex;
         }
-        .photo-placeholder {
-            aspect-ratio: 1;
-            background: #242f3d;
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            color: #555;
-            border: 1px dashed #33a1fd;
-        }
+        .s-red { background: #D90012; flex: 1; }
+        .s-blue { background: #0033A0; flex: 1; }
+        .s-orange { background: #F2A800; flex: 1; }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="container">
-        <div class="header">
-            <div class="group-icon">TA</div>
-            <div class="header-info">
-                <h2>Türeme Avcıları</h2>
-                <p>Grup Bağlantısı: t.me/turemeavcilari</p>
+    <div class="glass-panel">
+        <div class="logo-area">🦅</div>
+        <h1>TÜREME AVCILARI</h1>
+        <p class="tagline">Güç, Adalet ve Sadakat</p>
+
+        <div class="admin-box">
+            <div class="admin-item">
+                <span class="admin-name">@falohan</span>
+                <span class="admin-rank">KURUCU</span>
+            </div>
+            <div class="admin-item">
+                <span class="admin-name">@Sosyopatbirey</span>
+                <span class="admin-rank">KURUCU</span>
+            </div>
+            <div class="admin-item">
+                <span class="admin-name">@aranansahiss</span>
+                <span class="admin-rank">KURUCU</span>
             </div>
         </div>
 
-        <div class="chat-area">
-            <div class="message received">
-                <span class="user-tag">Sistem</span>
-                Hoş geldiniz! Türeme Avcıları resmi web sayfasına giriş yaptınız.
-            </div>
-            <div class="message received">
-                <span class="user-tag">Bilgi</span>
-                Aşağıdaki kurucularımızla iletişime geçebilirsiniz.
-            </div>
-            
-            <div class="photo-grid">
-                <div class="photo-placeholder">📸</div>
-                <div class="photo-placeholder">📸</div>
-                <div class="photo-placeholder">📸</div>
-                <div class="photo-placeholder">📸</div>
-            </div>
-        </div>
+        <a href="https://t.me/turemeavcilari" class="btn btn-tg">TELEGRAM GRUBUNA KATIL</a>
+    </div>
 
-        <div class="admin-section">
-            <div class="admin-title">Kurucular</div>
-            <div class="admin-list">
-                <div class="admin-card">👑 <span>@falohan</span></div>
-                <div class="admin-card">👑 <span>@Sosyopatbirey</span></div>
-                <div class="admin-card">👑 <span>@aranansahiss</span></div>
-            </div>
-        </div>
-
-        <a href="https://t.me/turemeavcilari" class="join-btn" target="_blank">GRUBA KATIL</a>
+    <div class="flag-stripe">
+        <div class="s-red"></div>
+        <div class="s-blue"></div>
+        <div class="s-orange"></div>
     </div>
 
 </body>
